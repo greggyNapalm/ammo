@@ -18,12 +18,19 @@ EOL = '\r\n'
 in_file = '/path/to/some/big/file'
 content_type = 'multipart/form-data'
 boundary = '------------------------------d7c3d7c4089e'
-body_part = 'Content-Disposition: form-data; name="request"; filename="req.xml"'
+body_part = 'Content-Disposition: form-data; name="request"; filename="nm.xml"'
 body_type = 'Content-Type: application/xml'
 
 
 def make_post_req(req_path, body, context_up=None):
-    ''' Create POST HTTP requset, calc size of it.'''
+    ''' Create POST HTTP requset, calc size of it.
+    Args:
+        req_path: str - request path
+        body: str - request body
+        context_up: dict - update some request attributes if needed
+
+    Returns:
+        str - HTTP request in plain-text with size in bytes'''
 
     context = {
             'protocol': 'HTTP/1.1',
@@ -54,7 +61,13 @@ def make_post_req(req_path, body, context_up=None):
 
 
 def make_multi_part(req_path, body):
-    ''' Create multipart POST HTTP requset.'''
+    ''' Create multipart POST HTTP requset.
+    Args:
+        req_path: str - request path
+        body: str - request body
+
+    Returns:
+        str - HTTP request in plain-text with size in bytes'''
 
     d_host = 'target.changeme.test'
     d_usr_agent = 'TankKG v.default'
@@ -77,7 +90,13 @@ def make_multi_part(req_path, body):
 
 
 def make_get_req(req_path, context_up=None):
-    ''' Create GET HTTP requset, calc size of it.'''
+    ''' Create GET HTTP requset, calc size of it.
+    Args:
+        req_path: str - request path
+        context_up: dict - update some request attributes if needed
+
+    Returns:
+        str - HTTP request in plain-text with size in bytes'''
 
     context = {
             'protocol': 'HTTP/1.1',
