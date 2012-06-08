@@ -11,6 +11,7 @@ Use pip and `vurtualev/virtualenvwrapper <http://docs.python-guide.org/en/latest
     pip install -e git+git://github.com/greggyNapalm/ammo.git#egg=ammo
 
 Example
+-------
 
 ::
 
