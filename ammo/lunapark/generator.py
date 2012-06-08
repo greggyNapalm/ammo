@@ -15,7 +15,7 @@ import urllib
 EOL = '\r\n'
 
 # multi_part params
-in_file = '/Users/gkomissarov/Downloads/request1.xml'
+in_file = '/path/to/some/big/file'
 content_type = 'multipart/form-data'
 boundary = '------------------------------d7c3d7c4089e'
 body_part = 'Content-Disposition: form-data; name="request"; filename="req.xml"'
@@ -27,10 +27,10 @@ def make_post_req(req_path, body, context_up=None):
 
     context = {
             'protocol': 'HTTP/1.1',
-            'Host': 'target.yandex.test',
+            'Host': 'target.changeme.test',
             'User-Agent': 'TankKG v.default',
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Referer': 'http://lunapark.yandex-team.ru',
+            'Referer': 'https://github.com/greggyNapalm/ammo',
             'Accept': '*/*',
             'Cookies': [],
         }
@@ -56,7 +56,7 @@ def make_post_req(req_path, body, context_up=None):
 def make_multi_part(req_path, body):
     ''' Create multipart POST HTTP requset.'''
 
-    d_host = 'target.yandex.test'
+    d_host = 'target.changeme.test'
     d_usr_agent = 'TankKG v.default'
 
     fmt_body = '--' + boundary + EOL
@@ -81,9 +81,9 @@ def make_get_req(req_path, context_up=None):
 
     context = {
             'protocol': 'HTTP/1.1',
-            'Host': 'target.yandex.test',
+            'Host': 'target.changeme.com',
             'User-Agent': 'TankKG v.default',
-            'Referer': 'http://lunapark.yandex-team.ru',
+            'Referer': 'https://github.com/greggyNapalm/ammo',
             'Accept': '*/*',
             'Cookies': [],
         }
@@ -115,5 +115,5 @@ if __name__ == '__main__':
         print 'Cant\'t read ', in_file, '\n', e
         sys.exit(1)
     pass
-    make_multi_part('/yandex/api/', f_body)
+    make_multi_part('/chnageme/api/', f_body)
     print '0',
