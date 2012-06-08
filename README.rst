@@ -17,9 +17,9 @@ Example
 
     >>> from ammo.lunapark.generator import make_get_req
     >>> print make_get_req('/some-path/give-me-the-truth')
-    155
+    162
     GET /some-path/give-me-the-truth HTTP/1.1
-    Host: target.yandex.test
+    Host: target.changeme.com
     User-Agent: TankKG v.default
-    Referer: http://lunapark.yandex-team.ru
+    Referer: https://github.com/greggyNapalm/ammo
     Accept: */*
