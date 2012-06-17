@@ -57,7 +57,7 @@ def make_post_req(req_path, body, context_up=None):
     req += 'Content-Length: ' + str(len(body)) + EOL
     req += EOL + body + EOL
     req += EOL
-    print str(len(req)) + '\n' + req,
+    return str(len(req)) + '\n' + req,
 
 
 def make_multi_part(req_path, body):
@@ -86,7 +86,7 @@ def make_multi_part(req_path, body):
     req += 'Content-Type: multipart/form-data; boundary=' + boundary + EOL
     req += 'Content-Length: ' + str(len(fmt_body)) + EOL
     req += EOL + fmt_body + EOL + EOL
-    print str(len(req)) + "\n" + req,
+    return str(len(req)) + "\n" + req
 
 
 def make_get_req(req_path, context_up=None):
@@ -123,7 +123,7 @@ def make_get_req(req_path, context_up=None):
         req += 'Connection: ' + context['Connection'] + EOL
 
     req += EOL
-    print str(len(req)) + '\n' + req,
+    return str(len(req)) + '\n' + req
 
 if __name__ == '__main__':
     try:
