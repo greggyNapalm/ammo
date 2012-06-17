@@ -15,11 +15,36 @@ Example
 
 ::
 
+    >>> import sys
     >>> from ammo.lunapark.generator import make_get_req
-    >>> print make_get_req('/some-path/give-me-the-truth')
-    162
-    GET /some-path/give-me-the-truth HTTP/1.1
+    >>> PATH = [
+    ...     '/search/v2/coat?category=warm&text=big',
+    ...     '/search/v2/coat?category=warm&text=supper',
+    ...     '/search/v2/coat?category=warm&text=black',
+    ... ]
+    >>> for p in PATH:
+    ...     sys.stdout.write(make_get_req(p))
+    ...
+    172
+    GET /search/v2/coat?category=warm&text=big HTTP/1.1
     Host: target.changeme.com
     User-Agent: TankKG v.default
     Referer: https://github.com/greggyNapalm/ammo
     Accept: */*
+
+    175
+    GET /search/v2/coat?category=warm&text=supper HTTP/1.1
+    Host: target.changeme.com
+    User-Agent: TankKG v.default
+    Referer: https://github.com/greggyNapalm/ammo
+    Accept: */*
+
+    174
+    GET /search/v2/coat?category=warm&text=black HTTP/1.1
+    Host: target.changeme.com
+    User-Agent: TankKG v.default
+    Referer: https://github.com/greggyNapalm/ammo
+    Accept: */*
+
+    >>> sys.stdout.write('0\n')
+    0
