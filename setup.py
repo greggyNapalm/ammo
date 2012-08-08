@@ -1,9 +1,10 @@
 from setuptools import setup, find_packages
 
+from ammo import __version__
 
 setup(
     name = 'ammo',
-    version = '0.1',
+    version=__version__,
     author = 'Gregory Komissarov',
     author_email = 'gregory.komissarov@gmail.com',
     description = 'Input data generator for different load tools',
@@ -13,17 +14,12 @@ setup(
     packages = [
         'ammo',
         'ammo.lunapark',
+        'ammo.phantom'
     ],
     zip_safe = False,
-    install_requires = [
-        'setuptools',
-        'jinja2',
-        # -*- Extra requirements: -*-
-    ],
     classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Console',
-        'Framework :: Lunapark',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
