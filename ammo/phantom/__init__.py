@@ -8,51 +8,37 @@ ammo.phantom
 Functions to generate raw HTTP request.
 """
 
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
 import io
-#import sys
 import httplib
-#import urllib
 
 
 class HttpCompiler(object):
-    version = '1.0'
+    version = '2.0'
 
-    def __init__(self, cntx_up=None):
-        self.method = None
-        self.qs = None
-        self.headers = {}
-        self.defaults = {
-            'method': 'GET',
-            'Host': 'target.on-fire.io',
-            'kwargs': {},
-            #'body': '{body}',
-        }
-        self.cntx = self.defaults
-        if cntx_up:
-            self.cntx.update(cntx_up)
+    def __init__(self, method=None, headers=None):
+        self.method = method
+        self.headers = headers
 
-        conn = httplib.HTTPConnection(self.cntx['Host'])
-        bio = io.BytesIO()
-        bio.sendall = bio.write
-        conn.sock = bio
-        conn.request(self.cntx['method'], '{qs}', **self.cntx['kwargs'])
-        self.tmpl = bio.getvalue().decode('utf-8')
-
-    def build_req(self, qs, body):
-        return self.tmpl % qs
-
-    def from_dict(self, **kwargs):
-        host = kwargs.get('Host', None) or self.headers['Host']
-        method = kwargs.get('method', None) or self.method
-        qs = kwargs.get('qs', None) or self.qs
-        kw = {
-            'headers': kwargs.get('headers', None) or self.headers,
-            'body': kwargs.get('body', None) or self.body,
-        }
+    def build_raw(self, url, method=None, body=None, headers=None):
+        '''
+        @see http://docs.python.org/2.7/library/httplib.html#httplib.HTTPConnection.request
+        '''
+        headers = headers or self.headers
+        assert isinstance(headers, dict)
+        host = headers.get('Host', None)
+        assert host
+        method = method or self.method
+        assert method
 
         conn = httplib.HTTPConnection(host)
         bio = io.BytesIO()
         bio.sendall = bio.write
         conn.sock = bio
-        conn.request(method, qs, **kw)
+        conn.request(method, url, body=body, headers=headers)
         return bio.getvalue().decode('utf-8')
+
+    def build_phantom(self, *args, **kwargs):
+        req = self.build_raw(*args, **kwargs)
+        return '{}\n{}'.format(len(req), req)
