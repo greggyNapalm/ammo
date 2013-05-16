@@ -21,7 +21,7 @@ class HttpCompiler(object):
         self.method = method
         self.headers = headers
 
-    def build_raw(self, url, method=None, body=None, headers=None):
+    def build_raw(self, url, method=None, body=None, headers=None, tag=None):
         '''
         @see http://docs.python.org/2.7/library/httplib.html#httplib.HTTPConnection.request
         '''
