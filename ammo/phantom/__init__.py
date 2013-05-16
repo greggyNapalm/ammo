@@ -41,4 +41,7 @@ class HttpCompiler(object):
 
     def build_phantom(self, *args, **kwargs):
         req = self.build_raw(*args, **kwargs)
+        tag = kwargs.get('tag', None)
+        if tag:
+            return '{} {}\n{}'.format(len(req), tag, req)
         return '{}\n{}'.format(len(req), req)
