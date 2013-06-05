@@ -15,7 +15,7 @@ import httplib
 
 
 class HttpCompiler(object):
-    version = '2.0'
+    version = '2.1'
 
     def __init__(self, method=None, headers=None):
         self.method = method
@@ -37,7 +37,7 @@ class HttpCompiler(object):
         bio.sendall = bio.write
         conn.sock = bio
         conn.request(method, url, body=body, headers=headers)
-        return bio.getvalue().decode('utf-8')
+        return bio.getvalue()
 
     def build_phantom(self, *args, **kwargs):
         req = self.build_raw(*args, **kwargs)
