@@ -57,7 +57,7 @@ class HttpCompiler(object):
         if tag:
             req_ph = '{} {}\n'.format(len(req_ph), tag) + req_ph
         else:
-            req_ph += '{}\n'.format(len(req_ph)) + req_ph
+            req_ph = '{}\n'.format(len(req_ph)) + req_ph
 
         req_ph += '\n'
         return req_ph

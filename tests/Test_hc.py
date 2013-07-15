@@ -63,24 +63,19 @@ class HTTPCompilerCase(unittest.TestCase):
         self.assertTrue(all(
             [result_hdrs[h] == headers[h] for h in headers.keys()]))
 
-    #def test_phantom_format(self):
-    #    ''' Request size calculation.
-    #    '''
-    #    headers = {
-    #        'Host': 'httpbin.org',
-    #        'Connection': 'close',
-    #    }
-    #    hc = HttpCompiler(method='PATCH', headers=headers)
-    #    qs = '/path/to/check'
-    #    req = hc.build_phantom(qs, body='Some stuff')
-    #    p_len, p_req = req.split('\n', 1)
+    def test_phantom_format(self):
+        ''' Request size calculation.
+        '''
+        headers = {
+            'Host': 'httpbin.org',
+            'Connection': 'close',
+        }
+        hc = HttpCompiler(method='PATCH', headers=headers)
+        qs = '/path/to/check'
+        req = hc.build_phantom(qs, body='Some stuff')
+        p_len, p_req = req.split('\n', 1)
 
-    #    p_req_cleared = p_req.rstrip('\n')
-    #    sys.stdout.write(req)
-    #    #print p_req
-    #    #print len(p_req)
-    #    #self.assertTrue(int(p_len) == len(p_req))
-    #    self.assertTrue(int(p_len) == len(p_req_cleared))
+        self.assertTrue(int(p_len) == (len(p_req) - 1))
 
     def test_httpbin_resp(self):
         '''Check HTTP status code of responce from real public server.
