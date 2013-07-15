@@ -15,7 +15,7 @@ import httplib
 
 
 class HttpCompiler(object):
-    version = '3.0'
+    version = '3.1'
 
     def __init__(self, method=None, headers=None):
         self.method = method
