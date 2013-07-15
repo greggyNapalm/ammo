@@ -48,18 +48,16 @@ class HttpCompiler(object):
         Returns:
             str, ready to use with yandex-tank tool ammo file.
         """
-        req = self.build_raw(*args, **kwargs)
         tag = kwargs.get('tag', None)
-        req_ph = ''
-        if tag:
-            req_ph += '{} {}\n'.format(len(req), tag)
-        else:
-            req_ph += '{}\n'.format(len(req))
-
-        req_ph += req
+        req_ph = self.build_raw(*args, **kwargs)
 
         if kwargs.get('body'):  # httplib miss this for bodyless requests
             req_ph += '\r\n\r\n'
+
+        if tag:
+            req_ph = '{} {}\n'.format(len(req_ph), tag) + req_ph
+        else:
+            req_ph += '{}\n'.format(len(req_ph)) + req_ph
 
         req_ph += '\n'
         return req_ph
