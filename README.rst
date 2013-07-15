@@ -12,39 +12,18 @@ Use pip and `vurtualev/virtualenvwrapper <http://docs.python-guide.org/en/latest
 
 Example
 -------
-
+>>> hc.build_phantom('/api/v1.0/resource', method='POST', headers={'Host': 'httpbin.org', 'Content-type': 'application/json'}, body='{"a": "b"}')
+'148\nPOST /api/v1.0/resource HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 10\r\nHost: httpbin.org\r\nContent-type: application/json\r\n\r\n{"a": "b"}\r\n\r\n\n'
 ::
 
-    >>> import sys
-    >>> from ammo.lunapark.generator import make_get_req
-    >>> PATH = [
-    ...     '/search/v2/coat?category=warm&text=big',
-    ...     '/search/v2/coat?category=warm&text=supper',
-    ...     '/search/v2/coat?category=warm&text=black',
-    ... ]
-    >>> for p in PATH:
-    ...     sys.stdout.write(make_get_req(p))
-    ...
-    172
-    GET /search/v2/coat?category=warm&text=big HTTP/1.1
-    Host: target.changeme.com
-    User-Agent: TankKG v.default
-    Referer: https://github.com/greggyNapalm/ammo
-    Accept: */*
-
-    175
-    GET /search/v2/coat?category=warm&text=supper HTTP/1.1
-    Host: target.changeme.com
-    User-Agent: TankKG v.default
-    Referer: https://github.com/greggyNapalm/ammo
-    Accept: */*
-
-    174
-    GET /search/v2/coat?category=warm&text=black HTTP/1.1
-    Host: target.changeme.com
-    User-Agent: TankKG v.default
-    Referer: https://github.com/greggyNapalm/ammo
-    Accept: */*
-
-    >>> sys.stdout.write('0\n')
-    0
+    >>> from ammo.phantom import HttpCompiler
+    >>> hc = HttpCompiler(method='GET', headers={'Host': 'httpbin.org'})
+    >>> hc.build_phantom('/some/path')
+    '73\nGET /some/path HTTP/1.1\r\nAccept-Encoding: identity\r\nHost: httpbin.org\r\n\r\n\n'
+    >>> 
+    >>> hc.build_phantom('/other/path')
+    '74\nGET /other/path HTTP/1.1\r\nAccept-Encoding: identity\r\nHost: httpbin.org\r\n\r\n\n'
+    >>> 
+    >>> hc.build_phantom('/api/v1.0/resource', method='POST', body='{"a": "b"}',
+    ...                  headers={'Host': 'httpbin.org', 'Content-type': 'application/json'})
+    '148\nPOST /api/v1.0/resource HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 10\r\nHost: httpbin.org\r\nContent-type: application/json\r\n\r\n{"a": "b"}\r\n\r\n\n'
