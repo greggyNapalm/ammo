@@ -1,23 +1,23 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 from ammo import __version__
 
 setup(
-    name = 'ammo',
+    name='ammo',
     version=__version__,
-    author = 'Gregory Komissarov',
-    author_email = 'gregory.komissarov@gmail.com',
-    description = 'Input data generator for different load tools',
-    license = 'BSD',
-    url = 'https://github.com/greggyNapalm/ammo',
-    keywords = ['phantom', 'lunapark', 'ammo'],
-    packages = [
+    author='Gregory Komissarov',
+    author_email='gregory.komissarov@gmail.com',
+    description='Input data generator for different load tools',
+    license='BSD',
+    url='https://github.com/greggyNapalm/ammo',
+    keywords=['phantom', 'yandex-tank', 'ammo'],
+    packages=[
         'ammo',
         'ammo.lunapark',
         'ammo.phantom'
     ],
-    zip_safe = False,
-    classifiers = [
+    zip_safe=False,
+    classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
