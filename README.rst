@@ -23,6 +23,8 @@ Example
 ::
 
     >>> from ammo.phantom import HttpCompiler
+    >>> HttpCompiler.version
+    '3.1'
     >>> hc = HttpCompiler(method='GET', headers={'Host': 'httpbin.org'})
     >>> hc.build_phantom('/some/path')
     '73\nGET /some/path HTTP/1.1\r\nAccept-Encoding: identity\r\nHost: httpbin.org\r\n\r\n\n'
