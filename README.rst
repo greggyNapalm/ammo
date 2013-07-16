@@ -20,7 +20,7 @@ from GitHub
 Example
 -------
 
-::
+.. code-block:: python
 
     >>> from ammo.phantom import HttpCompiler
     >>> HttpCompiler.version
