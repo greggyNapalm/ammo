@@ -5,6 +5,9 @@
 ammo.examples
 ~~~~~~~~~~~~~
 
+Official generator examples could be checked here - https://yandextank.readthedocs.io/en/latest/ammo_generators.html
+
+
 toss off examples.
 """
 
