@@ -57,7 +57,7 @@ class Mixer(object):
         while True:
             for g_name, ctx in state.iteritems():
                 if cntr >= self.num_req:
-                    raise StopIteration('{} achieved'.format(self.num_req))
+                    raise StopIteration('{0} achieved'.format(self.num_req))
                 ctx['proficit'] += ctx['ratio']
                 if ctx['proficit'] >= 1:
                     for i in xrange(int(ctx['proficit'])):
