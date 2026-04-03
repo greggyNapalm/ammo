@@ -1,6 +1,8 @@
 Ammo: Load testing input data generators
 ========================================
 
+PYPI email recovery greggyNapalm
+
 Installation
 ------------
 Use pip and `vurtualev/virtualenvwrapper <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_
